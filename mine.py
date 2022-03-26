@@ -34,7 +34,7 @@ while not solution_found:
     if not solution_found:
         num += 1
     else:
-        print('Num: ' + str(nonce))
+        print('Num: ' + str(num))
 
         print('Block hash:')
         print(second_hash)
