@@ -7,8 +7,6 @@ def get_sha_256_hash(input_value):
 def block_hash_less_than_target(block_hash, given_target):
     return int(block_hash, 16) < int(given_target, 16)
 
-
-# Initial block data (the transactions' merkle tree root, timestamp, client version, hash of the previous block)
 blockData = \
     '01000000000000000000000000000000000000000000000000000000000000000000000' \
     '03ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a29ab5f' \
@@ -20,7 +18,6 @@ blockData = \
     'f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5fac00000000' \
         .encode()
 
-# Initial target - this is the easiest it will ever be to mine a Bitcoin block
 target = '0x00000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF'
 
 solution_found = False
@@ -30,11 +27,9 @@ num = 0
 while not solution_found:
     block_data_with_num = block_data_hexadecimal_value + num
 
-    # Find double hash
     first_hash = get_sha_256_hash(hex(block_data_with_num).encode())
     second_hash = get_sha_256_hash(first_hash.encode())
     solution_found = block_hash_less_than_target(second_hash, target)
-    #print(solution_found)
 
     if not solution_found:
         num += 1
