@@ -29,10 +29,10 @@ block_data_hexadecimal_value = int(blockData, 16)
 num = 0
 
 while not solution_found:
-    block_data_with_nonce = block_data_hexadecimal_value + nonce
+    block_data_with_num = block_data_hexadecimal_value + num
 
     # Find double hash
-    first_hash = get_sha_256_hash(hex(block_data_with_nonce).encode())
+    first_hash = get_sha_256_hash(hex(block_data_with_num).encode())
     second_hash = get_sha_256_hash(first_hash.encode())
     solution_found = block_hash_less_than_target(second_hash, target)
     #print(solution_found)
