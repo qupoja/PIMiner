@@ -1,5 +1,4 @@
 import hashlib
-import os
 
 def get_sha_256_hash(input_value):
     return hashlib.sha256(input_value).hexdigest()
@@ -44,5 +43,3 @@ while not solution_found:
 
         print('Block hash:')
         print(second_hash)
-        
-os.system("pause")
